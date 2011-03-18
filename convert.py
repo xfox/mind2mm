@@ -1,6 +1,7 @@
 #coding=utf-8
 import sys
 import json
+from zipfile import ZipFile
 
 def utf8escape(str):
     ret = '';
@@ -17,7 +18,7 @@ def process(nodes):
     	ret += '</node>'
     return ret
 
-mindfile = file(sys.argv[1], 'rb').read()
+mindfile = ZipFile(sys.argv[1], 'r').open('map.json').read()
 data = json.loads(mindfile)
 
 export = '<map version="0.9.0">'
